@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Academic to-do list</title>
+<style type="text/css">
+  html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Helvetica Neue LT', 'Helvetica LT Std', 'Helvetica Neue', 'Helvetica', sans-serif;
+  color: black;
+  }
+  
+  form {
+  font-weight: bold;
+  font-size: 48pt;
+  text-decoration: none;
+  }
+  
+  form {
+  position: fixed;
+  height: auto;
+  max-width: 95%;
+  width: 12em;
+  top: 40%;
+  left: 50%;
+  transform: translate(-49%,0);
+  border: 0;
+  }
+  
+<!-- ul li:before -->
+<!-- { -->
+<!--     content: '\2610'; -->
+<!--     display: block; -->
+<!--     float: left; -->
+<!--     width: 1.2em; -->
+<!-- } -->
+
+<!-- ul li.checked:before -->
+<!-- { -->
+<!--     content: '\2611'; -->
+<!-- } -->
+
+/* Based on https://cssanimation.rocks/list-items/ */
+/* label { max-height:5em; } */
+
+form label {
+display:block;
+margin-left: 1.2em;
+max-height:5em;
+transition: opacity 1s ease-in;
+}
+
+form label.slideout {
+transition: all 1s ease-out;
+opacity: 0;
+max-height: 0;
+text-decoration: line-through;
+}
+
+input[type='checkbox'] {
+display:none;
+}
+
+input[type='checkbox'] + span:before {
+margin-left: -1.2em;
+width: 1.2em;
+display: inline-block;
+content: '\2610';
+}
+
+input[type='checkbox']:checked + span:before
+{
+pointer-events: none;
+margin-left: -1.2em;
+width: 1.2em;
+display: inline-block;
+content: '\2611';
+}
+
+
+</style>
+
+<script>
+  function handlecheck(cb) {
+  cb.removeAttribute('onclick');
+  cb.className = cb.cl
+  var target = cb.parentNode;
+  var frm = target.parentNode;
+  target.className = 'slideout';
+  
+  var newlab = document.createElement('label');
+  <!-- var newcb = document.createElement('input'); -->
+  <!-- newcb.setAttribute('type','checkbox'); -->
+  <!-- newcb.setAttribute('onclick','handlecheck(this);'); -->
+  <!-- newlab.appendChild(newcb); -->
+  <!-- var newsp = document.createElement('span'); -->
+  <!-- newlab.appendChild(newsp); -->
+  newlab.innerHTML = '<input type="checkbox" onclick="handlecheck(this);" class="added"/><span/>Finish research paper';
+
+  frm.appendChild(newlab);
+
+  setInterval(function(){
+    target.remove()
+  }, 1000);
+}
+</script>
+
+</head>
+
+
+<body>
+<!--  <ul>
+    <li onclick="dosf(this);">litext
+  </ul>-->
+<form>
+  <label><input type="checkbox" onclick="handlecheck(this);"/><span/>Finish research paper</label>
+</form>
+</body>
