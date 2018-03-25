@@ -8,6 +8,8 @@ html, body {
   height: 100%;
   font-family: 'Helvetica Neue LT', 'Helvetica LT Std', 'Helvetica Neue', 'Helvetica', sans-serif;
   color: black;
+  margin: 0;
+  overflow: hidden;
 }
   
 form {
@@ -62,6 +64,18 @@ input[type='checkbox']:checked + span:before
   display: inline-block;
   content: '\2611';
 }
+
+div#about {
+  position:absolute;
+  bottom: 0.5em;
+  right: 1em;
+  color: #aaa;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
 </style>
 
 <script>
@@ -80,7 +94,7 @@ input[type='checkbox']:checked + span:before
   setInterval(function(){
     target.remove()
   }, 1000);
-}
+}  
 </script>
 </head>
 
@@ -88,4 +102,7 @@ input[type='checkbox']:checked + span:before
   <form>
     <label><input type="checkbox" onclick="handlecheck(this);"/><span/>Finish research paper</label>
   </form>
+  <div id="about">
+    <a href="about/">About</a>
+  </div>
 </body>
